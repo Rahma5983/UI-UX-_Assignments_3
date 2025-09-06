@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Ordering website</title>
+  <link rel="icon" type="image/png" href="Images/Logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .category-card {
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .category-card:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">🍴 Food Drop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Orders</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="bg-light py-5 text-center">
+    <h1 class="fw-bold">Welcome to Food Drop 😋</h1>
+    <p class="lead">Order your favorite meals quickly & easily</p>
+    <a href="#categories" class="btn btn-danger btn-lg">Browse Menu</a>
+  </div>
+
+  <div class="container my-5" id="categories">
+    <h2 class="fw-bold text-center mb-4">Choose a Category</h2>
+    <div class="row g-4 text-center">
+
+      <div class="col-md-4">
+        <div class="card shadow-lg rounded-4 category-card" onclick="showMenu('food')">
+          <img src="Images/food.jpg" class="card-img-top rounded-top-4" alt="Food">
+          <div class="card-body">
+            <h4 class="fw-bold">🍔 Food</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-lg rounded-4 category-card" onclick="showMenu('beverage')">
+          <img src="Images/bevarages2.jpg" class="card-img-top rounded-top-4" alt="Beverage">
+          <div class="card-body">
+            <h4 class="fw-bold">🥤 Beverages</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-lg rounded-4 category-card" onclick="showMenu('salad')">
+          <img src="Images/salad3.jpg" class="card-img-top rounded-top-4" alt="Salad">
+          <div class="card-body">
+            <h4 class="fw-bold">🥗 Salads</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-lg rounded-4 category-card" onclick="showMenu('cake')">
+          <img src="Images/cakes.jpg" class="card-img-top rounded-top-4" alt="Cake">
+          <div class="card-body">
+            <h4 class="fw-bold">🍰 Cakes</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-lg rounded-4 category-card" onclick="showMenu('icecream')">
+          <img src="Images/Icecreams.jpg" class="card-img-top rounded-top-4" alt="Ice Cream">
+          <div class="card-body">
+            <h4 class="fw-bold">🍨 Ice Cream</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container my-5 d-none" id="menuSection">
+    <h2 class="fw-bold mb-4" id="menuTitle"></h2>
+    <div class="row g-4" id="menuItems">
+    </div>
+    <div class="text-center mt-4">
+      <button class="btn btn-outline-danger" onclick="goBack()">⬅ Back to Categories</button>
+    </div>
+  </div>
+
+  <footer class="bg-danger text-white text-center py-3">
+    <p class="mb-0">© 2025 Foodie. All rights reserved.</p>
+  </footer>
+
+<script>
+  const menuData = {
+    food: [
+      { name: "Cheese Burger", price: "₹199", img: "https://www.nestlegoodnes.com/ph/sites/default/files/srh_recipes/440a9c7206d782751c58f17fb1c798c9.jpg"},
+      { name: "Pepperoni Pizza", price: "₹299", img: "https://mojo.generalmills.com/api/public/content/iD9XDP4qRGCvhuXE9QVkxg_gmi_hi_res_jpeg.jpeg?v=ce3e36a9&t=eae6004af7d84bc5a9fa522ac84b14a8" },
+      { name: "Creamy Pasta", price: "₹249", img: "https://www.allrecipes.com/thmb/ypWgCr14nLX4nqfdj7jFh3SCwoU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/9332510-e8f56137ed0941acb72f70b70daf30e0.jpg" },
+      { name: "Creamy Tteokbokki", price: "₹149", img: "https://media.istockphoto.com/id/1778133610/photo/tteokbokki-or-topokki-korean-street-food-spicy-rice-cakes.jpg?s=612x612&w=0&k=20&c=0GdRLntkDVqAOgAexDWIa528PWWsixI9f42j_JgByiY=" },
+      { name: "Paneer Tikka", price: "₹200", img: "https://orders.popskitchen.in/storage/2024/09/image-358.png" },
+      { name: "Samosa", price: "₹49", img: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_960,w_960//InstamartAssets/samosa.webp?updatedAt=1727156367955" },
+      { name: "Veg Biryani", price: "₹149", img: "https://www.madhuseverydayindian.com/wp-content/uploads/2022/11/easy-vegetable-biryani.jpg" },
+      { name: "Ramyeon", price: "₹49", img: "https://img.freepik.com/premium-photo/ramyeon-korean-instant-noodles-with-egg-korean-food-style_1339-182689.jpg" },
+      { name: "Gimbap", price: "₹109", img: "https://www.siftandsimmer.com/wp-content/uploads/2023/05/korean-gimbap-featured.jpg" },
+      { name: "Fried Rice", price: "₹105", img: "https://t4.ftcdn.net/jpg/00/68/53/35/360_F_68533591_guYFbtlPxbgfPJkYDGkI7NHGKFMovkvS.jpg" },
+      { name: "Dumplings", price: "₹99", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0oS7oEQcW6hutaLiiREiEeu6_emc_RAVb4g&s" },
+      { name: "Litti Chokha", price: "₹105", img: "https://recipedabba.com/wp-content/uploads/2021/01/Litti-Chokha.jpg" },
+      { name: "Paav Bhaaji", price: "₹99", img: "https://www.cubesnjuliennes.com/wp-content/uploads/2020/07/Instant-Pot-Mumbai-Pav-Bhaji-Recipe.jpg" },
+      { name: "Sandwich", price: "₹99", img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2016/05/vegetable-sandwich-recipe.jpg" },
+      { name: "Veg Soup", price: "₹90", img: "https://thecozyapron.com/wp-content/uploads/2018/07/vegetable-soup_thecozyapron_1.jpg" },
+      { name: "Mango Sticky Rice", price: "₹99", img: "https://www.chenabgourmet.com/wp-content/uploads/2024/02/sticky-rice-with-mango-recipe.jpg" },
+      { name: "Green Curry", price: "₹89", img: "https://www.kitchensanctuary.com/wp-content/uploads/2019/06/Thai-Green-Curry-square-FS.jpg" },
+
+
+    
+    ],
+    beverage: [
+      { name: "Bobba Tea", price: "₹149", img: "https://www.teacurry.com/cdn/shop/articles/tea-curry-bubble-tea-6.jpg?v=1587053482" },
+      { name: "Orange Juice", price: "₹99", img: "https://images.herzindagi.info/image/2020/Nov/orange-juice-for-health.jpg" },
+      { name: "Chocolate Milkshake", price: "₹179", img: "https://static.toiimg.com/thumb/84170265.cms?imgsize=299797&width=800&height=800" },
+      { name: "Strawberry Shake", price: "₹170", img: "https://www.thehungrybites.com/wp-content/uploads/2023/06/Strawberry-milkshake-frappuccino-featured.jpg" },
+      { name: "Iced Tea", price: "₹89", img: "https://cdn.shopify.com/s/files/1/0645/1401/files/honey-berry-iced-tea-1-web.jpg?v=1713807532" },
+      { name: "Kaju-Badaam Shake", price: "₹79", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHSN-CbxT-h6d8PessHfaYXFeQK2IeIg1EzQ&s" },
+
+    ],
+    salad: [
+      { name: "Caesar Salad", price: "₹179", img: "https://itsavegworldafterall.com/wp-content/uploads/2023/04/Avocado-Caesar-Salad-FI.jpg" },
+      { name: "Greek Salad", price: "₹199", img: "https://feelgoodfoodie.net/wp-content/uploads/2020/05/Greek-Salad-TIMG.jpg" },
+      { name: "Fruit Salad", price: "₹129", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9v0O8bsUmo9_Sk6MK35AadOy6yBb-jS1AHg&s" },
+      { name: "Caprese Salad", price: "₹109", img: "https://hips.hearstapps.com/hmg-prod/images/caprese-salad-recipe-2-664ceea357d6f.jpg?crop=0.6666666666666667xw:1xh;center,top&resize=1200:*" },
+      { name: "Bean Salad", price: "₹100", img: "https://www.inspiredtaste.net/wp-content/uploads/2020/07/Bean-Salad-Recipe-2-1200.jpg" },
+      { name: "Tuna Salad", price: "₹79", img: "https://www.giallozafferano.com/images/255-25514/Tuna-salad_1200x800.jpg" },
+
+    ],
+    cake: [
+      { name: "Chocolate Cake", price: "₹299", img: "https://twocupsflour.com/wp-content/uploads/2020/12/Untitled-1200-x-1200-px-8.jpg" },
+      { name: "Red Velvet Cake", price: "₹349", img: "https://thescranline.com/wp-content/uploads/2023/06/RED-VELVET-CAKE-23-S-01.jpg" },
+      { name: "Vanilla Cake", price: "₹299", img: "https://thescranline.com/wp-content/uploads/2025/02/VANILLA-CAKE-25-S-01.jpg" },
+      { name: "Cheese Cake", price: "₹299", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Lemon_Cheesecake_Fontanella_Tea_Garden.jpg/1200px-Lemon_Cheesecake_Fontanella_Tea_Garden.jpg" },
+      { name: "Strawberry Cake", price: "₹109", img: "https://www.tasteofhome.com/wp-content/uploads/2018/01/Strawberry-Jam-Cake_EXPS_TOHVP24_92780_MF_03_28_2.jpg" },
+      { name: "Sponge Cake", price: "₹89", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCWCm-dG4KZcO2mDS1jeMSQsED52s_J7I13A&s" },
+      { name: "Pineapple Cake", price: "₹199", img: "https://www.tasteofhome.com/wp-content/uploads/2025/05/Pineapple-Pudding-Cake_EXPS_TOHVP25_26937_MF_05_01_1.jpg" },
+      { name: "Cupcakes", price: "₹99", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUI4CNO8u1DGvVKaNpzz_fXbaU3xaVw0T7og&s" },
+      { name: "Butter Cake", price: "₹99", img: "https://vintagekitchennotes.com/wp-content/uploads/2020/09/Vanilla-Butter-Cake.2.jpg" },
+    ],
+    icecream: [
+      { name: "Vanilla Ice Cream", price: "₹99", img: "https://www.cuisinart.co.uk/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-uk-cuisinart-sfra-Library/default/dw02d70fe5///images/recipes/classic-vanilla-ice-cream.jpg?sw=1200&sh=1200&sm=fit" },
+      { name: "Chocolate Ice Cream", price: "₹119", img: "https://www.windingcreekranch.org/wp-content/uploads/2022/03/Homemade-chocolate-ice-cream-1200-1200-1.jpg" },
+      { name: "Strawberry Ice Cream", price: "₹99", img: "https://www.wundermix.de/cdn/shop/articles/3cH8PH0K1Hcwnt-219254.png?crop=center&height=1200&v=1700219209&width=1200" },
+      { name: "Rainbow Ice Cream", price: "₹99", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtk3qrrverRFDFoNm5Mxr7-oKB5cmvn-myBQ&s" },
+      { name: "Pistachio Ice Cream", price: "₹99", img: "https://www.keep-calm-and-eat-ice-cream.com/wp-content/uploads/2022/09/Pistachio-ice-cream-hero-06.jpg" },
+    ]
+  };
+
+  function showMenu(category) {
+    document.getElementById("categories").classList.add("d-none");
+    document.getElementById("menuSection").classList.remove("d-none");
+    document.getElementById("menuTitle").innerText = category.charAt(0).toUpperCase() + category.slice(1);
+
+    const menuItems = document.getElementById("menuItems");
+    menuItems.innerHTML = "";
+    menuData[category].forEach(item => {
+      menuItems.innerHTML += `
+        <div class="col-md-4">
+          <div class="card shadow-lg rounded-4 h-100">
+            <img src="${item.img}" class="card-img-top" alt="${item.name}">
+            <div class="card-body">
+              <h5 class="card-title">${item.name}</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-bold">${item.price}</span>
+                <button class="btn btn-sm btn-danger">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  function goBack() {
+    document.getElementById("menuSection").classList.add("d-none");
+    document.getElementById("categories").classList.remove("d-none");
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
