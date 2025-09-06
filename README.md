@@ -7,50 +7,50 @@ It includes a Login Page and a Dashboard (Home Page) where users can explore cat
 
 Login Page
 
-Simple and clean login form.
+   Simple and clean login form.
 
-Background image with blur effect.
+   Background image with blur effect.
 
-Blue theme with Bootstrap styling.
+   Blue theme with Bootstrap styling.
 
-Dashboard (Home Page)
+   Dashboard (Home Page)
 
-Navbar with smooth navigation.
+   Navbar with smooth navigation.
 
-Hero section with a welcome message.
+   Hero section with a welcome message.
 
-Categories: Food, Cold Drinks, Ice Cream, Pastries.
+   Categories: Food, Cold Drinks, Ice Cream, Pastries.
 
-Each category has multiple items with images, prices, and Order buttons.
+   Each category has multiple items with images, prices, and Order buttons.
 
-Hover effects on category cards.
+   Hover effects on category cards.
 
-Fully responsive design.
+   Fully responsive design.
 
 🛠️ Tech Stack
 
-HTML – Structure of the website
+   HTML – Structure of the website
 
-Bootstrap (CSS) – Responsive design & styling
+   Bootstrap (CSS) – Responsive design & styling
 
-Unsplash API – Free images for categories and food items
+   Unsplash API – Free images for categories and food items
 
 🚀 How to Run
 
-Download or clone this repository.
+   Download or clone this repository.
 
-git clone https://github.com/your-username/food-drop.git
+   git clone https://github.com/your-username/food-drop.git
 
 
-Open the folder and locate the files:
+   Open the folder and locate the files:
 
-login.html → Login Page
+   login.html → Login Page
 
-home.html → Dashboard (after login)
+   home.html → Dashboard (after login)
 
-Open login.html in your browser to start.
+   Open login.html in your browser to start.
 
-Login will redirect you to the Dashboard (home.html).
+   Login will redirect you to the Dashboard (home.html).
 
 📂 Project Structure
 food-drop/
@@ -61,25 +61,25 @@ food-drop/
 📸 Screenshots
 🔑 Login Page
 
-Clean login interface with background image
+   Clean login interface with background image
 
 🏠 Dashboard
 
-Navbar with categories
+   Navbar with categories
 
-Category cards (Food, Drinks, Ice Cream, Pastries)
+   Category cards (Food, Drinks, Ice Cream, Pastries)
 
-Product listings with price & "Order" button
+   Product listings with price & "Order" button
 
 📌 Future Enhancements
 
-Add a shopping cart system 🛒
+   Add a shopping cart system 🛒
 
-Implement user authentication (PHP/Node.js + Database)
+   Implement user authentication (PHP/Node.js + Database)
 
-Add search & filter functionality
+   Add search & filter functionality
 
-Include checkout & payment gateway integration
+   Include checkout & payment gateway integration
 
 👨‍💻 Author
-  Rahma Naqui.
+   Rahma Naqui.
