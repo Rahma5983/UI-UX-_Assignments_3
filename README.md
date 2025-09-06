@@ -1,4 +1,4 @@
-🍴 Food Drop – Online Food Ordering Website
+                                                                                    🍴 Food Drop – Online Food Ordering Website
 
 Food Drop is a responsive food ordering website built with HTML & Bootstrap.
 It includes a Login Page and a Dashboard (Home Page) where users can explore categories like Food, Drinks, Ice Cream, and Pastries and order items directly.
@@ -83,7 +83,3 @@ Include checkout & payment gateway integration
 
 👨‍💻 Author
   Rahma Naqui.
-
-Rahma Khan
-📍 India
-✉️ Email: rahmakhan21739@gmail.com
